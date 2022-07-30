@@ -18,7 +18,7 @@ using namespace std;
 string IV = "7380166f4914b2b9172442d7da8a0600a96f30bc163138aae38dee4db0fb0e4e";
 
 string hashdata(int num,string iv);			//hash the number,input is dec
-string hashdata(string num,string iv);		//hash the number,input is hex
+string hashdata(string num,bool a,string iv);		//hash the number,input is hex
 
 string bintohex(string str); //turn bin to hex
 string hextobin(string str);//turn hex to bin
@@ -62,14 +62,19 @@ string hashdata(int num,string iv)			//hash the number
 	return result;
 }
 
-string hashdata(string datap,string iv)		//hash,input is hex
+string hashdata(string datap,bool a,string iv)		//hash,input is hex
 {
 	cout << "*************************" << "strat hash" << "**********************" << endl;
 	string datahex = "";
-	for(int i=0;i<datap.size();i++)
-		datahex+=dectohex((int)datap[i]);
+	if (a == 1)					//输入需要转为ascii码再操作,即输入为消息
+	{
+		for (int i = 0; i < datap.size(); i++)
+			datahex += dectohex((int)datap[i]);
+		cout << "the ASCII of data is: " << datahex << endl;
+	}
+	else						////输入为16进制形式
+		datahex = datap;		
 	string databin = hextobin(datahex);
-	//cout << datahex << endl;
 	string data = padding(databin);		//padding data
 	//string data = padding(datap);		//padding data
 	data = iteration(data,iv);
@@ -162,7 +167,7 @@ string padding(string str)		//padding the data,input is binary
 	while (lengthbin.size() < 64)
 		lengthbin = '0' + lengthbin;
 	data = data + lengthbin;
-	string datahex1 = bintohex(data);
+	//string datahex1 = bintohex(data);
 	//cout << "消息填充后："<<datahex1 << endl;
 	return data;
 }
