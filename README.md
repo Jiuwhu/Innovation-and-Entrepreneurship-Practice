@@ -1,1 +1,0 @@
-# Innovation-and-Entrepreneurship-Practice
