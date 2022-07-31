@@ -13,6 +13,7 @@
 SM3算法C++实现：SM3/SM3.cpp
 
 长度扩展攻击：SM3/length_extension_attack.cpp
+SM4算法实现：SM4/SM4.cpp
 
 未完成：
 Merkle Tree：MerkleTree/Merkeltree.cpp
