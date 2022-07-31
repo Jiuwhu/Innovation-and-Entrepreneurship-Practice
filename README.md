@@ -10,16 +10,16 @@
 
 已完成：
 
-SM3算法C++实现：SM3.cpp
+SM3算法C++实现：SM3/SM3.cpp
 
-长度扩展攻击：length_extension_attack.cpp
+长度扩展攻击：SM3/length_extension_attack.cpp
 
 未完成：
-Merkle Tree
+Merkle Tree：MerkleTree/Merkeltree.cpp
 
 有问题：
 
-生日攻击：birthday_attack.cpp
+生日攻击：SM3/birthday_attack.cpp
 
 SM3算法的位数过大，个人计算机计算力不足，所以无法验证结果。
 
