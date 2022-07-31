@@ -14,6 +14,9 @@ SM3算法C++实现：SM3.cpp
 
 长度扩展攻击：length_extension_attack.cpp
 
+未完成：
+Merkle Tree
+
 有问题：
 
 生日攻击：birthday_attack.cpp
