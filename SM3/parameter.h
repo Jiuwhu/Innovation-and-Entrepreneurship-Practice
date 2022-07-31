@@ -13,5 +13,9 @@ std::string hextobin(std::string str);//turn hex to bin
 std::string bintohex(std::string str); //turn bin to hex
 std::string dectobin(int str);		//turn dec to bin
 std::string iteration(std::string str, std::string iv);		//iteration function
+
 std::string LenExtAttack(std::string md1, int len, std::string m3);		//length extension attack
+
+std::string birattack(std::string str);		//birthday attack,input is hash
+
 #endif
