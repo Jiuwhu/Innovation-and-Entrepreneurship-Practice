@@ -180,6 +180,7 @@ string LenExtAttack(string md1,int len,string m3)
 生日攻击源于生日悖论。
 
 根据生日悖论，随机选择$k=1.77\sqrt{2^n}$个不同的消息，计算其哈希值，便能找到一对碰撞。
+而SM3算法为256-bit。需要计算的过多，个人计算机的计算性能不到，故未计算出结果。
 
 ```C++
 string birattack(string str)		//birthday attack,input is hash
