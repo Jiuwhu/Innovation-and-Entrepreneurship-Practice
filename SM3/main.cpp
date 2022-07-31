@@ -4,33 +4,41 @@ using namespace std;
 
 int main()
 {
-	//SM3Ëã·¨
+	//SM3ç®—æ³•
 	string data1 = "helloworld";
 	string data2 = "abc";
 	string hashresult = hashdata(data1,1);
 
-	//³¤¶ÈÀ©Õ¹¹¥»÷
+	//é•¿åº¦æ‰©å±•æ”»å‡»
 	cout << endl<<"****************length extension attack****************" << endl;
-	//ÖÆ×÷ÕýÈ·½á¹ûÓÃÓÚÑéÖ¤
+	//åˆ¶ä½œæ­£ç¡®ç»“æžœç”¨äºŽéªŒè¯
 	string asc1 = "", asc2 = "",m1="";
 	for (int i = 0; i < data1.size(); i++)
-		asc1 += dectohex((int)data1[i]);		//½«data1×ªÎªASCIIÂëÐÎÊ½
+		asc1 += dectohex((int)data1[i]);		//å°†data1è½¬ä¸ºASCIIç å½¢å¼
 	//cout << "data1: " << asc1 << endl<<endl;
-	string databin1 = hextobin(asc1);			//×ªÎª¶þ½øÖÆ
-	m1 += padding(databin1);					//¶Ôdata1µÄ¶þ½øÖÆÐÎÊ½½øÐÐ³¤¶ÈÀ©Õ¹
-	m1 = bintohex(m1);							//½«À©Õ¹ºóµÄ½á¹û×ªÎª16½øÖÆ
+	string databin1 = hextobin(asc1);			//è½¬ä¸ºäºŒè¿›åˆ¶
+	m1 += padding(databin1);					//å¯¹data1çš„äºŒè¿›åˆ¶å½¢å¼è¿›è¡Œé•¿åº¦æ‰©å±•
+	m1 = bintohex(m1);							//å°†æ‰©å±•åŽçš„ç»“æžœè½¬ä¸º16è¿›åˆ¶
 	//cout << "data1||padding:" << m1 << endl;
 
-	for (int i = 0; i < data2.size(); i++)		//½«data2×ªÎªASCIIÂëÐÎÊ½
+	for (int i = 0; i < data2.size(); i++)		//å°†data2è½¬ä¸ºASCIIç å½¢å¼
 		asc2 += dectohex((int)data2[i]);
-	m1 = m1 + asc2;								//½«À©Õ¹ºóµÄÎ´Öªdata1Óëdata2½øÐÐÆ´½Ó£¬´æÈëm1
+	m1 = m1 + asc2;								//å°†æ‰©å±•åŽçš„æœªçŸ¥data1ä¸Ždata2è¿›è¡Œæ‹¼æŽ¥ï¼Œå­˜å…¥m1
 	//cout << "data1||padding||data2: " << m1 << endl;
-	string r1 = hashdata(m1,0);					//¼ÆËãm1µÄ¹þÏ£Öµ£¬¼´ÕýÈ·´ð°¸
-	cout << "ÕýÈ·´ð°¸Îª£º" << r1<<endl;
-	//³¤¶ÈÀ©Õ¹¹¥»÷
+	string r1 = hashdata(m1,0);					//è®¡ç®—m1çš„å“ˆå¸Œå€¼ï¼Œå³æ­£ç¡®ç­”æ¡ˆ
+	cout << "æ­£ç¡®ç­”æ¡ˆä¸ºï¼š" << r1<<endl;
+	//é•¿åº¦æ‰©å±•æ”»å‡»
 	int length = databin1.size();
 	string r2=LenExtAttack(hashresult, length, asc2);
-	cout << "¹¥»÷µÃµ½µÄ½á¹ûÎª£º" << r2 << endl;
+	cout << "æ”»å‡»å¾—åˆ°çš„ç»“æžœä¸ºï¼š" << r2 << endl;
 	cout << "****************************length extension attack end******************" << endl << endl;
+	
+	
+	//ç”Ÿæ—¥æ”»å‡»
+	string br=birattack(hashresult);
+	if (br != "0")
+		cout << "æ‰¾åˆ°ä¸€å¯¹ç¢°æ’žï¼šx=" + data1 + "y=" + br + "ã€‚å“ˆå¸Œå€¼ä¸º" << hashresult << endl;
+	
+	return 0;
 	return 0;
 }
